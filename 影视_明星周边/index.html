@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>影视/明星周边 商品笔记风向看板</title>
+<style>
+:root { --primary: #6C5CE7; --secondary: #A29BFE; --bg: #F0EDFF; --text: #333; --text-light: #666; --card-bg: white; --radius: 12px; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; padding: 20px; }
+.container { max-width: 1200px; margin: 0 auto; }
+
+/* Header */
+.header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; padding: 40px; border-radius: 16px; margin-bottom: 30px; text-align: center; }
+.header h1 { font-size: 32px; margin-bottom: 8px; }
+.header .meta { opacity: 0.9; font-size: 14px; }
+
+/* KPI */
+.kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 30px; }
+.kpi-card { background: var(--card-bg); padding: 24px; border-radius: var(--radius); box-shadow: 0 2px 12px rgba(0,0,0,0.08); text-align: center; transition: transform 0.2s; }
+.kpi-card:hover { transform: translateY(-4px); }
+.kpi-label { font-size: 14px; color: var(--text-light); margin-bottom: 8px; }
+.kpi-value { font-size: 36px; font-weight: 800; color: var(--primary); }
+.kpi-sub { font-size: 12px; color: #999; margin-top: 4px; }
+
+/* Sections */
+.section { background: var(--card-bg); border-radius: var(--radius); padding: 28px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+.section-title { font-size: 20px; font-weight: 700; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--primary); display: flex; align-items: center; gap: 8px; }
+
+/* Directions */
+.direction-item { padding: 12px 16px; margin-bottom: 8px; background: #f8f9fa; border-radius: 8px; font-size: 15px; border-left: 4px solid var(--primary); }
+
+/* Breakdown */
+.breakdown-row { display: flex; align-items: center; padding: 12px 0; border-bottom: 1px solid #f0f0f0; gap: 12px; }
+.breakdown-name { width: 160px; font-weight: 600; font-size: 14px; flex-shrink: 0; }
+.breakdown-bar { flex: 1; height: 8px; background: #f0f0f0; border-radius: 4px; overflow: hidden; }
+.breakdown-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); border-radius: 4px; transition: width 0.5s; }
+.breakdown-stats { display: flex; gap: 16px; font-size: 13px; color: var(--text-light); flex-shrink: 0; }
+.breakdown-stats span { white-space: nowrap; }
+
+/* Titles */
+.title-row { display: flex; align-items: center; padding: 10px 0; border-bottom: 1px solid #f0f0f0; gap: 12px; }
+.title-rank { width: 40px; height: 40px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; flex-shrink: 0; }
+.title-rank:nth-child(n+4) { background: #ddd; color: #666; }
+.title-text { flex: 1; font-size: 14px; }
+.title-metrics { display: flex; gap: 12px; font-size: 12px; color: var(--text-light); flex-shrink: 0; }
+.metric-exp {} 
+.metric-ctr { color: var(--primary); font-weight: 600; }
+.metric-gctr { color: #e17055; font-weight: 600; }
+
+/* Notes */
+.note-card { padding: 16px; margin-bottom: 12px; border: 1px solid #e8e8e8; border-radius: 10px; border-left: 4px solid var(--primary); }
+.note-rank { font-size: 12px; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
+.note-title { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
+.note-stats { display: flex; gap: 20px; font-size: 13px; color: var(--text-light); }
+.note-stats b { color: var(--primary); }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .breakdown-row { flex-wrap: wrap; }
+    .breakdown-stats { flex-wrap: wrap; gap: 8px; }
+    .title-row { flex-wrap: wrap; }
+    .title-metrics { width: 100%; justify-content: flex-end; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>📊 影视/明星周边 商品笔记内容风向看板</h1>
+        <div class="meta">数据周期: 2026-04-15 ~ 2026-04-22 | 生成时间: 2026-04-22 12:22 | 小虾🦐 出品</div>
+    </div>
+    
+    
+    <div class="kpi-grid">
+        <div class="kpi-card">
+            <div class="kpi-label">笔记总数</div>
+            <div class="kpi-value">106</div>
+            <div class="kpi-sub">曝光>10000 有效笔记</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">总曝光量</div>
+            <div class="kpi-value">1.7M</div>
+            <div class="kpi-sub">笔记曝光总和</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">平均封面CTR</div>
+            <div class="kpi-value">50.2%</div>
+            <div class="kpi-sub">Top20% 达 105.1%</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">平均商卡CTR</div>
+            <div class="kpi-value">13.6%</div>
+            <div class="kpi-sub">Top20% 达 37.6%</div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <div class="section-title">🧭 内容风向</div>
+        <div class="direction-item">📌 价格/好价型标题，占比约 17%</div>
+<div class="direction-item">📌 开箱/到货型标题，占比约 5%</div>
+<div class="direction-item">📌 情绪/感叹型标题，占比约 5%</div>
+<div class="direction-item">📌 明星/IP型标题，占比约 4%</div>
+<div class="direction-item">📌 疑问/互动型标题，占比约 10%</div>
+
+    </div>
+    
+    <div class="section">
+        <div class="section-title">📂 二级类目分布</div>
+        
+        <div class="breakdown-row">
+            <div class="breakdown-name">UNKNOWN</div>
+            <div class="breakdown-bar"><div class="breakdown-fill" style="width:100%"></div></div>
+            <div class="breakdown-stats">
+                <span>106篇</span>
+                <span>封面CTR 49.3%</span>
+                <span>商卡CTR 13.6%</span>
+                <span>1.7M曝光</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <div class="section-title">🏆 双高笔记（封面CTR × 商卡CTR）</div>
+        
+        <div class="note-card">
+            <div class="note-rank">TOP 1</div>
+            <div class="note-title">码住，集美们！！</div>
+            <div class="note-stats">
+                <span>📖 12.2万 曝光</span>
+                <span>🖼 封面CTR <b>103.4%</b></span>
+                <span>🛒 商卡CTR <b>17.5%</b></span>
+            </div>
+        </div>
+        <div class="note-card">
+            <div class="note-rank">TOP 2</div>
+            <div class="note-title">无标题</div>
+            <div class="note-stats">
+                <span>📖 3.2万 曝光</span>
+                <span>🖼 封面CTR <b>103.9%</b></span>
+                <span>🛒 商卡CTR <b>18.6%</b></span>
+            </div>
+        </div>
+        <div class="note-card">
+            <div class="note-rank">TOP 3</div>
+            <div class="note-title">100张卡（五代练习生）爆率</div>
+            <div class="note-stats">
+                <span>📖 1.9万 曝光</span>
+                <span>🖼 封面CTR <b>101.7%</b></span>
+                <span>🛒 商卡CTR <b>21.8%</b></span>
+            </div>
+        </div>
+        <div class="note-card">
+            <div class="note-rank">TOP 4</div>
+            <div class="note-title">深空711相卡，现货余量</div>
+            <div class="note-stats">
+                <span>📖 1.7万 曝光</span>
+                <span>🖼 封面CTR <b>107.7%</b></span>
+                <span>🛒 商卡CTR <b>26.6%</b></span>
+            </div>
+        </div>
+        <div class="note-card">
+            <div class="note-rank">TOP 5</div>
+            <div class="note-title">谁懂只拆了五包的救赎感！👼🏻</div>
+            <div class="note-stats">
+                <span>📖 1.7万 曝光</span>
+                <span>🖼 封面CTR <b>105.7%</b></span>
+                <span>🛒 商卡CTR <b>25.9%</b></span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <div class="section-title">📝 TOP 爆款标题</div>
+        
+        <div class="title-row">
+            <span class="title-rank">#1</span>
+            <span class="title-text">ONER郑州演唱会小票别放褪色啦👉密封保存✅</span>
+            <span class="title-metrics">
+                <span class="metric-exp">👁 12.5万</span>
+                <span class="metric-ctr">封面CTR 0.1%</span>
+                <span class="metric-gctr">商卡CTR 1.1%</span>
+            </span>
+        </div>
+        <div class="title-row">
+            <span class="title-rank">#2</span>
+            <span class="title-text">码住，集美们！！</span>
+            <span class="title-metrics">
+                <span class="metric-exp">👁 12.2万</span>
+                <span class="metric-ctr">封面CTR 103.4%</span>
+                <span class="metric-gctr">商卡CTR 17.5%</span>
+            </span>
+        </div>
+        <div class="title-row">
+            <span class="title-rank">#3</span>
+            <span class="title-text">集美们，快抢！！</span>
+            <span class="title-metrics">
+                <span class="metric-exp">👁 8.7万</span>
+                <span class="metric-ctr">封面CTR 102.2%</span>
+                <span class="metric-gctr">商卡CTR 9.5%</span>
+            </span>
+        </div>
+        <div class="title-row">
+            <span class="title-rank">#4</span>
+            <span class="title-text">陶喆天津演唱会票根收纳‼️防褪色✅</span>
+            <span class="title-metrics">
+                <span class="metric-exp">👁 6.5万</span>
+                <span class="metric-ctr">封面CTR 0.0%</span>
+                <span class="metric-gctr">商卡CTR 0.4%</span>
+            </span>
+        </div>
+        <div class="title-row">
+            <span class="title-rank">#5</span>
+            <span class="title-text">九宫格已集齐，出全部复数！</span>
+            <span class="title-metrics">
+                <span class="metric-exp">👁 6.1万</span>
+                <span class="metric-ctr">封面CTR 20.8%</span>
+                <span class="metric-gctr">商卡CTR 8.8%</span>
+            </span>
+        </div>
+        <div class="title-row">
+            <span class="title-rank">#6</span>
+            <span class="title-text">陈浚铭的宝宝下课了吗</span>
+            <span class="title-metrics">
+                <span class="metric-exp">👁 5.5万</span>
+                <span class="metric-ctr">封面CTR 0.2%</span>
+                <span class="metric-gctr">商卡CTR 2.6%</span>
+            </span>
+        </div>
+        <div class="title-row">
+            <span class="title-rank">#7</span>
+            <span class="title-text">码住呀，姐妹们！</span>
+            <span class="title-metrics">
+                <span class="metric-exp">👁 5.2万</span>
+                <span class="metric-ctr">封面CTR 102.9%</span>
+                <span class="metric-gctr">商卡CTR 13.7%</span>
+            </span>
+        </div>
+        <div class="title-row">
+            <span class="title-rank">#8</span>
+            <span class="title-text">🙅不要再说后悔没早刷到这个追星包挂了</span>
+            <span class="title-metrics">
+                <span class="metric-exp">👁 4.2万</span>
+                <span class="metric-ctr">封面CTR 0.1%</span>
+                <span class="metric-gctr">商卡CTR 2.1%</span>
+            </span>
+        </div>
+        <div class="title-row">
+            <span class="title-rank">#9</span>
+            <span class="title-text">调整了无数版的饺子碗终于准备发货了😭</span>
+            <span class="title-metrics">
+                <span class="metric-exp">👁 4.2万</span>
+                <span class="metric-ctr">封面CTR 102.8%</span>
+                <span class="metric-gctr">商卡CTR 6.6%</span>
+            </span>
+        </div>
+        <div class="title-row">
+            <span class="title-rank">#10</span>
+            <span class="title-text">防褪色✅薛之谦广州演唱会票根收纳方法‼️‼️</span>
+            <span class="title-metrics">
+                <span class="metric-exp">👁 4.2万</span>
+                <span class="metric-ctr">封面CTR 0.4%</span>
+                <span class="metric-gctr">商卡CTR 0.6%</span>
+            </span>
+        </div>
+        <div class="title-row">
+            <span class="title-rank">#11</span>
+            <span class="title-text">19.9米的蓝梦情吗❓真的是正品吗❓</span>
+            <span class="title-metrics">
+                <span class="metric-exp">👁 4.2万</span>
+                <span class="metric-ctr">封面CTR 0.9%</span>
+                <span class="metric-gctr">商卡CTR 2.0%</span>
+            </span>
+        </div>
+        <div class="title-row">
+            <span class="title-rank">#12</span>
+            <span class="title-text">这是一条避雷贴，真没招了</span>
+            <span class="title-metrics">
+                <span class="metric-exp">👁 3.5万</span>
+                <span class="metric-ctr">封面CTR 0.9%</span>
+                <span class="metric-gctr">商卡CTR 1.4%</span>
+            </span>
+        </div>
+        <div class="title-row">
+            <span class="title-rank">#13</span>
+            <span class="title-text">无标题</span>
+            <span class="title-metrics">
+                <span class="metric-exp">👁 3.2万</span>
+                <span class="metric-ctr">封面CTR 103.9%</span>
+                <span class="metric-gctr">商卡CTR 18.6%</span>
+            </span>
+        </div>
+        <div class="title-row">
+            <span class="title-rank">#14</span>
+            <span class="title-text">防褪色✅张杰鸟巢演唱会票根收纳方法‼️</span>
+            <span class="title-metrics">
+                <span class="metric-exp">👁 3.0万</span>
+                <span class="metric-ctr">封面CTR 0.4%</span>
+                <span class="metric-gctr">商卡CTR 0.8%</span>
+            </span>
+        </div>
+        <div class="title-row">
+            <span class="title-rank">#15</span>
+            <span class="title-text">谁懂啊ive 正规又双叒跳水了，抓紧上车🥬</span>
+            <span class="title-metrics">
+                <span class="metric-exp">👁 2.7万</span>
+                <span class="metric-ctr">封面CTR 2.4%</span>
+                <span class="metric-gctr">商卡CTR 5.8%</span>
+            </span>
+        </div>
+    </div>
+    
+    <div style="text-align:center; padding: 20px; color: #999; font-size: 12px;">
+        <a href="../" style="color: var(--primary); text-decoration: none;">← 返回看板导航</a>
+    </div>
+</div>
+</body>
+</html>
