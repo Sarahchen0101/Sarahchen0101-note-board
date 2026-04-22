@@ -1,23 +1,90 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>商品笔记风向看板</title>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>商品笔记风向看板 · 统一入口</title>
 <style>
-body{font-family:-apple-system,"PingFang SC",sans-serif;background:#f5f5f7;margin:0;padding:40px 20px}
-.container{max-width:800px;margin:0 auto;text-align:center}
-h1{font-size:32px;margin-bottom:8px;color:#333}
-.sub{color:#999;margin-bottom:40px;font-size:14px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}
-.nav-card{display:block;padding:30px;background:white;border-radius:16px;text-decoration:none;color:#333;box-shadow:0 4px 20px rgba(0,0,0,0.08);transition:all 0.3s}
-.nav-card:hover{transform:translateY(-6px);box-shadow:0 8px 30px rgba(0,0,0,0.15)}
-.nav-icon{font-size:40px;margin-bottom:12px}
-.nav-name{font-size:18px;font-weight:600;line-height:1.4}
-.footer{margin-top:40px;color:#ccc;font-size:12px}
-</style></head>
-<body><div class="container">
-<h1>🦐 商品笔记风向看板</h1>
-<div class="sub">数据周期：近7天 · 小虾出品 · 数据驱动内容策略</div>
-<div class="grid"><a href="影视_明星周边/index.html" class="nav-card"><div class="nav-icon">📊</div><div class="nav-name">影视/明星周边</div></a>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif; background: #f0f2f5; min-height: 100vh; }
+
+.hero {
+    background: linear-gradient(135deg, #FF2D55 0%, #FF6B35 50%, #FFCC00 100%);
+    color: white; padding: 60px 24px 80px; text-align: center;
+    clip-path: ellipse(120% 100% at 50% 0%);
+}
+.hero-logo { font-size: 48px; margin-bottom: 12px; }
+.hero h1 { font-size: 28px; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.5px; }
+.hero p { font-size: 15px; opacity: 0.9; }
+
+.container { max-width: 680px; margin: -40px auto 0; padding: 0 20px 60px; }
+
+.board-card {
+    display: flex; align-items: center; gap: 16px;
+    background: white; border-radius: 16px; padding: 20px 24px;
+    margin-bottom: 16px; text-decoration: none; color: #333;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+    transition: all 0.25s; border-left: 5px solid var(--accent);
+}
+.board-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+.card-icon { font-size: 36px; flex-shrink: 0; }
+.card-body { flex: 1; }
+.card-title { font-size: 18px; font-weight: 700; margin-bottom: 4px; color: var(--accent); }
+.card-sub { font-size: 13px; color: #999; }
+.card-arrow { font-size: 20px; color: #ccc; transition: all 0.25s; }
+.board-card:hover .card-arrow { color: var(--accent); transform: translateX(4px); }
+
+.meta {
+    text-align: center; margin-top: 32px;
+    font-size: 12px; color: #bbb; line-height: 2;
+}
+.meta a { color: #FF2D55; text-decoration: none; }
+
+.section-label {
+    font-size: 12px; font-weight: 600; color: #999;
+    letter-spacing: 1px; text-transform: uppercase;
+    margin: 24px 0 12px; padding: 0 4px;
+}
+</style>
+</head>
+<body>
+<div class="hero">
+    <div class="hero-logo">🦐</div>
+    <h1>商品笔记风向看板</h1>
+    <p>近7天 · 数据驱动内容策略 · 每周一自动更新</p>
 </div>
-<div class="footer">更新时间: 2026-04-22 12:22</div>
-</div></body></html>
+<div class="container">
+    <div class="section-label">📊 当前看板</div>
+    
+    <a href="潮玩/index.html" class="board-card" style="--accent:#FF6B35">
+        <div class="card-icon">🎮</div>
+        <div class="card-body">
+            <div class="card-title">潮玩</div>
+            <div class="card-sub">模玩/动漫/周边/娃圈三坑/桌游</div>
+        </div>
+        <div class="card-arrow">→</div>
+    </a>
+    <a href="音乐CD_DVD/index.html" class="board-card" style="--accent:#6C5CE7">
+        <div class="card-icon">🎵</div>
+        <div class="card-body">
+            <div class="card-title">音乐CD/DVD</div>
+            <div class="card-sub">音乐/影视/明星/音像</div>
+        </div>
+        <div class="card-arrow">→</div>
+    </a>
+    <a href="影视_明星周边/index.html" class="board-card" style="--accent:#E84393">
+        <div class="card-icon">⭐</div>
+        <div class="card-body">
+            <div class="card-title">影视/明星周边</div>
+            <div class="card-sub">模玩 > 影视/明星周边</div>
+        </div>
+        <div class="card-arrow">→</div>
+    </a>
+    <div class="meta">
+        数据来源：redcdm.dm_ecm_user_note_entrance_traffic_purchase_convert_1d_di<br>
+        最后更新：2026-04-22 12:27 &nbsp;|&nbsp;
+        <a href="https://github.com/Sarahchen0101/Sarahchen0101-note-board">GitHub</a>
+    </div>
+</div>
+</body>
+</html>
