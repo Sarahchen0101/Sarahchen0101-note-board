@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>影视/明星周边行业风向看板 · 小红书电商</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --red: #ff2442; --orange: #ff6b35;
+      --warm: #fff8f4; --card-bg: #ffffff;
+      --text: #1a1a1a; --text-sub: #888;
+      --border: #f0ebe4;
+    }
+    body { font-family: -apple-system, "PingFang SC", sans-serif; background: var(--warm); color: var(--text); }
+
+    .header {
+      background: linear-gradient(135deg, #ff2442 0%, #ff6b35 100%);
+      padding: 28px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .header-title { font-size: 22px; font-weight: 800; color: #fff; }
+    .header-sub { font-size: 13px; color: rgba(255,255,255,0.75); margin-top: 3px; }
+    .header-week { font-size: 28px; font-weight: 800; color: #fff; }
+    .header-date { font-size: 12px; color: rgba(255,255,255,0.7); }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+
+    .section-label {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 16px; font-weight: 800; color: var(--text);
+      margin: 36px 0 16px;
+    }
+    .section-label .icon { font-size: 20px; }
+    .tag {
+      font-size: 11px; font-weight: 600; padding: 3px 10px;
+      background: #fff0f2; color: var(--red); border-radius: 20px;
+    }
+
+    /* 基准卡片 */
+    .bench-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .bench-card {
+      background: var(--card-bg); border-radius: 16px;
+      border: 1.5px solid var(--border); padding: 20px;
+    }
+    .bench-card.top { border-color: #ffd700; }
+    .bench-card.low { border-color: #e0e0e0; }
+    .bench-tier { font-size: 13px; font-weight: 700; margin-bottom: 12px; }
+    .bench-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+    .bench-label { font-size: 12px; color: var(--text-sub); }
+    .bench-val { font-size: 22px; font-weight: 800; color: var(--red); }
+    .bench-unit { font-size: 12px; font-weight: 400; color: var(--text-sub); margin-left: 2px; }
+
+    /* 内容风向 */
+    .directions-box { background: var(--card-bg); border-radius: 16px; border: 1.5px solid var(--border); padding: 20px; }
+    .trend-item { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; line-height: 1.6; }
+    .trend-item:last-child { border-bottom: none; }
+
+    /* 封面候选表格 */
+    .table-wrap { background: var(--card-bg); border-radius: 16px; border: 1.5px solid var(--border); overflow: hidden; }
+    table { width: 100%; border-collapse: collapse; }
+    th { background: #fff8f4; padding: 10px 14px; font-size: 12px; font-weight: 700; text-align: left; color: #666; }
+    td { padding: 10px 14px; font-size: 13px; border-top: 1px solid var(--border); }
+    td a { color: var(--red); text-decoration: none; }
+    td a:hover { text-decoration: underline; }
+
+    /* 标题列表 */
+    .titles-box { background: var(--card-bg); border-radius: 16px; border: 1.5px solid var(--border); padding: 20px; }
+    .title-item { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+    .title-item:last-child { border-bottom: none; }
+    .title-meta { font-size: 11px; color: var(--text-sub); margin-left: 8px; }
+
+    /* 二级类目 */
+    .cat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .cat-item { background: var(--card-bg); border-radius: 10px; border: 1px solid var(--border); padding: 12px 16px; font-size: 13px; }
+
+    .footer {
+      text-align: center; color: #aaa; font-size: 12px;
+      padding: 24px; border-top: 1px solid var(--border);
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div>
+    <div class="header-title">影视/明星周边 行业风向看板</div>
+    <div class="header-sub">小红书电商 · 商品笔记内容指引 · 共25篇有效笔记</div>
+  </div>
+  <div style="text-align:right">
+    <div class="header-week">W17</div>
+    <div class="header-date">2026/04/19 — 2026/04/26</div>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- 行业基准 -->
+  <div class="section-label"><span class="icon">📊</span>行业基准数据<span class="tag">近7天 · 动销商家</span></div>
+  <div class="bench-grid">
+    <div class="bench-card top">
+      <div class="bench-tier">🏆 TOP商家</div>
+      <div class="bench-row">
+        <span class="bench-label">商笔 CTR</span>
+        <span class="bench-val">13.4<span class="bench-unit">%</span></span>
+      </div>
+      <div class="bench-row">
+        <span class="bench-label">商品转化率</span>
+        <span class="bench-val">0.6<span class="bench-unit">%</span></span>
+      </div>
+    </div>
+    <div class="bench-card avg">
+      <div class="bench-tier">📊 行业均值</div>
+      <div class="bench-row">
+        <span class="bench-label">商笔 CTR</span>
+        <span class="bench-val">5.6<span class="bench-unit">%</span></span>
+      </div>
+      <div class="bench-row">
+        <span class="bench-label">商品转化率</span>
+        <span class="bench-val">0.2<span class="bench-unit">%</span></span>
+      </div>
+    </div>
+    <div class="bench-card low">
+      <div class="bench-tier">⚠️ 待提升</div>
+      <div class="bench-row">
+        <span class="bench-label">商笔 CTR</span>
+        <span class="bench-val">0.3<span class="bench-unit">%</span></span>
+      </div>
+      <div class="bench-row">
+        <span class="bench-label">商品转化率</span>
+        <span class="bench-val">0.1<span class="bench-unit">%</span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 本周内容风向 -->
+  <div class="section-label"><span class="icon">🔥</span>本周内容风向<span class="tag">基于真实数据分析</span></div>
+  <div class="directions-box">
+    <div class="trend-item">📌 演唱会场景型（演唱会票根收纳/伴手礼等），占比约36%</div>
+<div class="trend-item">📌 情绪共鸣型（谁懂/宝宝/避雷/后悔等情绪表达），占比约16%</div>
+<div class="trend-item">📌 品质信任型（防褪色/正品等品质关键词），占比约24%</div>
+<div class="trend-item">📌 价格/交易型（低价/拼车/跳水处理），占比约12%</div>
+
+  </div>
+
+  <!-- 高CTR封面候选 -->
+  <div class="section-label"><span class="icon">🖼️</span>高双高封面候选<span class="tag">封面CTR≥8% · 商卡CTR≥15%</span></div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>笔记标题</th>
+          <th>曝光量</th>
+          <th>封面CTR</th>
+          <th>商卡CTR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><a href="https://www.xiaohongshu.com/explore/69e75140000000002301def7" target="_blank">四代棉娃开箱</a></td>
+          <td>4万</td>
+          <td>8.7%</td>
+          <td>10.2%</td>
+        </tr>
+<tr>
+          <td>2</td>
+          <td><a href="https://www.xiaohongshu.com/explore/69d0743c000000001a0372c1" target="_blank">6.6🥕两个抓捕不限时</a></td>
+          <td>1万</td>
+          <td>10.0%</td>
+          <td>9.6%</td>
+        </tr>
+<tr>
+          <td>3</td>
+          <td><a href="https://www.xiaohongshu.com/explore/69e611b400000000230105da" target="_blank">一点点手写纸花🤏</a></td>
+          <td>1万</td>
+          <td>15.0%</td>
+          <td>16.4%</td>
+        </tr>
+<tr>
+          <td>4</td>
+          <td><a href="https://www.xiaohongshu.com/explore/69ddea0c000000001a0205ce" target="_blank">九宫格已集齐，出全部复数！</a></td>
+          <td>1万</td>
+          <td>8.9%</td>
+          <td>7.6%</td>
+        </tr>
+<tr>
+          <td>5</td>
+          <td><a href="https://www.xiaohongshu.com/explore/69e32f70000000001d01ad0c" target="_blank">这款应援手链太适合追星的我们啦</a></td>
+          <td>1万</td>
+          <td>10.0%</td>
+          <td>9.1%</td>
+        </tr>
+<tr>
+          <td>6</td>
+          <td><a href="https://www.xiaohongshu.com/explore/69df5bd30000000023022445" target="_blank">cortis 拼车！一直娱新出手写中文卡背特典卡</a></td>
+          <td>1万</td>
+          <td>12.0%</td>
+          <td>20.7%</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 本周高曝光标题 -->
+  <div class="section-label"><span class="icon">📝</span>本周高曝光标题参考<span class="tag">TOP 10</span></div>
+  <div class="titles-box">
+    <div class="title-item">「陈浚铭的宝宝下课了吗」<span class="title-meta">5万曝光 · 封面CTR 1.2%</span></div>
+<div class="title-item">「ONER郑州演唱会小票别放褪色啦👉密封保存✅」<span class="title-meta">4万曝光 · 封面CTR 0.1%</span></div>
+<div class="title-item">「四代棉娃开箱」<span class="title-meta">4万曝光 · 封面CTR 8.7%</span></div>
+<div class="title-item">「防褪色✅张杰鸟巢演唱会票根收纳方法‼️」<span class="title-meta">2万曝光 · 封面CTR 0.3%</span></div>
+<div class="title-item">「19.9米的蓝梦情吗❓真的是正品吗❓」<span class="title-meta">2万曝光 · 封面CTR 1.1%</span></div>
+<div class="title-item">「🙅不要再说后悔没早刷到这个追星包挂了」<span class="title-meta">2万曝光 · 封面CTR 0.1%</span></div>
+<div class="title-item">「于适成都演唱会票根收纳‼️‼️防褪色✅」<span class="title-meta">2万曝光 · 封面CTR 2.9%</span></div>
+<div class="title-item">「防褪色✅薛之谦广州演唱会票根收纳方法‼️‼️」<span class="title-meta">2万曝光 · 封面CTR 0.4%</span></div>
+<div class="title-item">「谁懂啊ive 正规又双叒跳水了，抓紧上车🥬」<span class="title-meta">2万曝光 · 封面CTR 3.4%</span></div>
+<div class="title-item">「这是一条避雷贴，真没招了」<span class="title-meta">2万曝光 · 封面CTR 0.6%</span></div>
+
+  </div>
+
+  <!-- 二级类目分布 -->
+  <div class="section-label"><span class="icon">📦</span>二级类目表现<span class="tag">按曝光量排序</span></div>
+  <div class="cat-grid">
+    <div class="cat-item">📦 影视/明星周边：四级类目，均值CTR 5.6%，共25篇</div>
+  </div>
+
+</div>
+
+<div class="footer">
+  小红书电商 · 影视/明星周边行业 · 数据来源：小红书 BI 平台 · 每周更新<br>
+  生成时间：2026-04-26 22:20
+</div>
+
+</body>
+</html>
