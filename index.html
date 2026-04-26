@@ -285,6 +285,151 @@
       color: #be185d;
     }
 
+    /* ── 封面图鉴 ── */
+    .cover-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .cover-card {
+      background: var(--card-bg);
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1.5px solid var(--border);
+      transition: box-shadow 0.2s;
+    }
+    .cover-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .cover-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      display: block;
+      background: #f0ebe4;
+      cursor: pointer;
+    }
+    .cover-img-placeholder {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: linear-gradient(135deg, #fce7f3, #fbcfe8);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: #ccc;
+      font-size: 32px;
+    }
+    .cover-img-placeholder span {
+      font-size: 12px;
+      color: #ccc;
+    }
+    .cover-body { padding: 12px 14px; }
+    .cover-type { font-size: 12px; font-weight: 700; color: var(--red); margin-bottom: 6px; }
+    .cover-desc { font-size: 13px; color: var(--text); font-weight: 600; margin-bottom: 8px; line-height: 1.4; }
+    .cover-note-link {
+      display: inline-block;
+      font-size: 12px;
+      color: #be185d;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .cover-note-link:hover { text-decoration: underline; }
+
+    /* ── 笔记列表 ── */
+    .note-list {
+      background: var(--card-bg);
+      border-radius: 14px;
+      border: 1.5px solid var(--border);
+      overflow: hidden;
+    }
+    .note-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+    }
+    .note-row:last-child { border-bottom: none; }
+    .note-row:hover { background: #fdf2f8; }
+    .note-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+      min-width: 0;
+    }
+    .note-rank {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #fce7f3;
+      color: #be185d;
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .note-thumb {
+      width: 36px;
+      height: 36px;
+      border-radius: 6px;
+      object-fit: cover;
+      flex-shrink: 0;
+      background: #fce7f3;
+    }
+    .note-thumb-placeholder {
+      width: 36px;
+      height: 36px;
+      border-radius: 6px;
+      background: #fce7f3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    .note-meta { min-width: 0; }
+    .note-title-link {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 400px;
+    }
+    .note-title-link:hover { color: var(--red); }
+    .note-stats { display: flex; gap: 6px; margin-top: 3px; flex-wrap: wrap; }
+    .stat-tag {
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .stat-exp { background: #f0f9ff; color: #0369a1; }
+    .stat-ctr { background: #fce7f3; color: #be185d; }
+    .stat-card { background: #f0fdf4; color: #10b981; }
+    .note-jump-btn {
+      font-size: 12px;
+      font-weight: 600;
+      color: #be185d;
+      text-decoration: none;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: #fce7f3;
+      flex-shrink: 0;
+      transition: background 0.15s;
+    }
+    .note-jump-btn:hover { background: #fbcfe8; }
+
     /* ── Footer ── */
     .footer {
       text-align: center;
@@ -296,6 +441,7 @@
     /* ── Responsive ── */
     @media (max-width: 800px) {
       .bench-grid { grid-template-columns: 1fr; }
+      .cover-grid { grid-template-columns: repeat(2, 1fr); }
       .topic-grid { grid-template-columns: 1fr; }
       .cat-grid { grid-template-columns: repeat(2, 1fr); min-width: unset; }
       .formula-example { display: none; }
@@ -314,11 +460,14 @@
       .bench-val { font-size: 18px; }
       .trend-grid { grid-template-columns: 1fr; }
       .topic-grid { grid-template-columns: 1fr; }
+      .cover-grid { grid-template-columns: 1fr; gap: 12px; }
       .cat-wrap { overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; }
       .cat-grid { grid-template-columns: repeat(4, 80vw); min-width: unset; }
       .cat-card { scroll-snap-align: start; }
       .formula-example { display: none; }
       .formula-row { font-size: 12px; padding: 10px 12px; }
+      .note-title-link { max-width: 200px; }
+      .note-jump-btn { font-size: 11px; padding: 3px 8px; }
     }
   </style>
 </head>
@@ -501,6 +650,448 @@
         <span class="topic-tag">#华晨宇</span>
         <span class="topic-tag">#cortis</span>
       </div>
+    </div>
+  </div>
+
+  
+  <!-- ③ 高表现笔记封面 -->
+  <div class="section-label">
+    <span class="icon">🖼️</span> 本周高表现笔记封面
+    <span class="tag">真实数据 · 封面CTR≥8% · 商卡CTR≥5%</span>
+  </div>
+  <div class="cover-grid">
+    
+    <div class="cover-card">
+      <a href="https://www.xiaohongshu.com/explore/69e75140000000002301def7" target="_blank"><div class="cover-img-placeholder">📝<span>封面加载失败</span></div></a>
+      <div class="cover-body">
+        <div class="cover-type">封面CTR 8.7% · 商卡CTR 10.2%</div>
+        <div class="cover-desc">四代棉娃开箱</div>
+        <a class="cover-note-link" href="https://www.xiaohongshu.com/explore/69e75140000000002301def7" target="_blank">曝光4万 → 查看笔记 ↗</a>
+      </div>
+    </div>
+    <div class="cover-card">
+      <a href="https://www.xiaohongshu.com/explore/69d0743c000000001a0372c1" target="_blank"><img class="cover-img" src="http://sns-webpic-qc.xhscdn.com/202604262238/49c69bde8c5cfd29235240d67180ba3f/notes_pre_post/1040g3k031ujf00bb2a205n6onjgk85gt58h7a78!nd_prv_wlteh_jpg_3" alt="6.6🥕两个抓捕不限时" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"></a><div class="cover-img-placeholder" style="display:none">📸</div>
+      <div class="cover-body">
+        <div class="cover-type">封面CTR 10.0% · 商卡CTR 9.6%</div>
+        <div class="cover-desc">6.6🥕两个抓捕不限时</div>
+        <a class="cover-note-link" href="https://www.xiaohongshu.com/explore/69d0743c000000001a0372c1" target="_blank">曝光1万 → 查看笔记 ↗</a>
+      </div>
+    </div>
+    <div class="cover-card">
+      <a href="https://www.xiaohongshu.com/explore/69e611b400000000230105da" target="_blank"><img class="cover-img" src="http://sns-webpic-qc.xhscdn.com/202604262238/225b030bd528dc434edf8a9b5e9b5d34/note_pre_post_uhdr/1040g3r831v6bp8j3hu70495vjnfak6og639h3o0!nd_prv_wgth_jpg_3" alt="一点点手写纸花🤏" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"></a><div class="cover-img-placeholder" style="display:none">📸</div>
+      <div class="cover-body">
+        <div class="cover-type">封面CTR 15.0% · 商卡CTR 16.4%</div>
+        <div class="cover-desc">一点点手写纸花🤏</div>
+        <a class="cover-note-link" href="https://www.xiaohongshu.com/explore/69e611b400000000230105da" target="_blank">曝光1万 → 查看笔记 ↗</a>
+      </div>
+    </div>
+    <div class="cover-card">
+      <a href="https://www.xiaohongshu.com/explore/69ddea0c000000001a0205ce" target="_blank"><img class="cover-img" src="http://sns-webpic-qc.xhscdn.com/202604262238/5c875a1af5c55a6f7c489a1197f50dda/1040g00831uud09ofig005ovtecq4551nuv0962g!nd_prv_wlteh_jpg_3" alt="九宫格已集齐，出全部复数！" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"></a><div class="cover-img-placeholder" style="display:none">📸</div>
+      <div class="cover-body">
+        <div class="cover-type">封面CTR 8.9% · 商卡CTR 7.6%</div>
+        <div class="cover-desc">九宫格已集齐，出全部复数！</div>
+        <a class="cover-note-link" href="https://www.xiaohongshu.com/explore/69ddea0c000000001a0205ce" target="_blank">曝光1万 → 查看笔记 ↗</a>
+      </div>
+    </div>
+    <div class="cover-card">
+      <a href="https://www.xiaohongshu.com/explore/69e32f70000000001d01ad0c" target="_blank"><img class="cover-img" src="http://sns-webpic-qc.xhscdn.com/202604262238/dcfd1b24021fb99dbf67d49efb2bca46/1040g2sg31v3fimgr1m7g5omuo75njot8tl4ldm8!nd_prv_wlteh_jpg_3" alt="这款应援手链太适合追星的我们啦" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"></a><div class="cover-img-placeholder" style="display:none">📸</div>
+      <div class="cover-body">
+        <div class="cover-type">封面CTR 10.0% · 商卡CTR 9.1%</div>
+        <div class="cover-desc">这款应援手链太适合追星的我们啦</div>
+        <a class="cover-note-link" href="https://www.xiaohongshu.com/explore/69e32f70000000001d01ad0c" target="_blank">曝光1万 → 查看笔记 ↗</a>
+      </div>
+    </div>
+    <div class="cover-card">
+      <a href="https://www.xiaohongshu.com/explore/69df5bd30000000023022445" target="_blank"><img class="cover-img" src="http://sns-webpic-qc.xhscdn.com/202604262238/74ae33e7e963a4b1dc4c6a7d1296aff8/notes_pre_post/1040g3k831uvq1qvt3m705q7mb3msl1t471n0oko!nd_prv_wgth_jpg_3" alt="cortis 拼车！一直娱新出手写中文卡背特典卡" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"></a><div class="cover-img-placeholder" style="display:none">📸</div>
+      <div class="cover-body">
+        <div class="cover-type">封面CTR 12.0% · 商卡CTR 20.7%</div>
+        <div class="cover-desc">cortis 拼车！一直娱新出手写中文卡背特典卡</div>
+        <a class="cover-note-link" href="https://www.xiaohongshu.com/explore/69df5bd30000000023022445" target="_blank">曝光1万 → 查看笔记 ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ④ 完整笔记列表 -->
+  <div class="section-label">
+    <span class="icon">📝</span> 完整笔记列表
+    <span class="tag">共25篇 · 点击可跳转</span>
+  </div>
+  <div class="note-list">
+    
+    <div class="note-row">
+      <div class="note-info">
+        <span class="note-rank">1</span>
+        <img class="note-thumb" src="http://sns-webpic-qc.xhscdn.com/202604262238/21fa111bef69226e2f40fb75a29ac449/1040g00831u65985niu005omuo75njot8s3hi2eo!nd_prv_wlteh_jpg_3" alt="" loading="lazy">
+        <div class="note-meta">
+          <a class="note-title-link" href="https://www.xiaohongshu.com/explore/69c51786000000002200e18f" target="_blank">陈浚铭的宝宝下课了吗</a>
+          <div class="note-stats">
+            <span class="stat-tag stat-exp">曝光 5万</span>
+            <span class="stat-tag stat-ctr">封面CTR 1.2%</span>
+            <span class="stat-tag stat-card">商卡CTR 2.5%</span>
+          </div>
+        </div>
+      </div>
+      <a class="note-jump-btn" href="https://www.xiaohongshu.com/explore/69c51786000000002200e18f" target="_blank">查看笔记 ↗</a>
+    </div>
+    <div class="note-row">
+      <div class="note-info">
+        <span class="note-rank">2</span>
+        <img class="note-thumb" src="http://sns-webpic-qc.xhscdn.com/202604262238/59e4a06d8f03a0d0478521e11408ae70/1040g00831us4an7i3q0g5pkp7u9p452cmcj63o8!nd_prv_wlteh_jpg_3" alt="" loading="lazy">
+        <div class="note-meta">
+          <a class="note-title-link" href="https://www.xiaohongshu.com/explore/69db97ee000000001a03396e" target="_blank">ONER郑州演唱会小票别放褪色啦👉密封保存✅</a>
+          <div class="note-stats">
+            <span class="stat-tag stat-exp">曝光 4万</span>
+            <span class="stat-tag stat-ctr">封面CTR 0.1%</span>
+            <span class="stat-tag stat-card">商卡CTR 1.6%</span>
+          </div>
+        </div>
+      </div>
+      <a class="note-jump-btn" href="https://www.xiaohongshu.com/explore/69db97ee000000001a03396e" target="_blank">查看笔记 ↗</a>
+    </div>
+    <div class="note-row">
+      <div class="note-info">
+        <span class="note-rank">3</span>
+        <div class="note-thumb-placeholder">📝</div>
+        <div class="note-meta">
+          <a class="note-title-link" href="https://www.xiaohongshu.com/explore/69e75140000000002301def7" target="_blank">四代棉娃开箱</a>
+          <div class="note-stats">
+            <span class="stat-tag stat-exp">曝光 4万</span>
+            <span class="stat-tag stat-ctr">封面CTR 8.7%</span>
+            <span class="stat-tag stat-card">商卡CTR 10.2%</span>
+          </div>
+        </div>
+      </div>
+      <a class="note-jump-btn" href="https://www.xiaohongshu.com/explore/69e75140000000002301def7" target="_blank">查看笔记 ↗</a>
+    </div>
+    <div class="note-row">
+      <div class="note-info">
+        <span class="note-rank">4</span>
+        <div class="note-thumb-placeholder">📝</div>
+        <div class="note-meta">
+          <a class="note-title-link" href="https://www.xiaohongshu.com/explore/69c75758000000002003866d" target="_blank">防褪色✅张杰鸟巢演唱会票根收纳方法‼️</a>
+          <div class="note-stats">
+            <span class="stat-tag stat-exp">曝光 2万</span>
+            <span class="stat-tag stat-ctr">封面CTR 0.3%</span>
+            <span class="stat-tag stat-card">商卡CTR 0.7%</span>
+          </div>
+        </div>
+      </div>
+      <a class="note-jump-btn" href="https://www.xiaohongshu.com/explore/69c75758000000002003866d" target="_blank">查看笔记 ↗</a>
+    </div>
+    <div class="note-row">
+      <div class="note-info">
+        <span class="note-rank">5</span>
+        <div class="note-thumb-placeholder">📝</div>
+        <div class="note-meta">
+          <a class="note-title-link" href="https://www.xiaohongshu.com/explore/69a29e1d000000001b01fd4d" target="_blank">19.9米的蓝梦情吗❓真的是正品吗❓</a>
+          <div class="note-stats">
+            <span class="stat-tag stat-exp">曝光 2万</span>
+            <span class="stat-tag stat-ctr">封面CTR 1.1%</span>
+            <span class="stat-tag stat-card">商卡CTR 2.4%</span>
+          </div>
+        </div>
+      </div>
+      <a class="note-jump-btn" href="https://www.xiaohongshu.com/explore/69a29e1d000000001b01fd4d" target="_blank">查看笔记 ↗</a>
+    </div>
+    <div class="note-row">
+      <div class="note-info">
+        <span class="note-rank">6</span>
+        <img class="note-thumb" src="http://sns-webpic-qc.xhscdn.com/202604262238/f9d236a2b8d11493656379b64936ccd0/1040g2sg31u8ftfo3ioe05p9klcm113ugrk0jin8!nd_prv_wlteh_jpg_3" alt="" loading="lazy">
+        <div class="note-meta">
+          <a class="note-title-link" href="https://www.xiaohongshu.com/explore/69c77b1f000000002202a35a" target="_blank">🙅不要再说后悔没早刷到这个追星包挂了</a>
+          <div class="note-stats">
+            <span class="stat-tag stat-exp">曝光 2万</span>
+            <span class="stat-tag stat-ctr">封面CTR 0.1%</span>
+            <span class="stat-tag stat-card">商卡CTR 2.1%</span>
+          </div>
+        </div>
+      </div>
+      <a class="note-jump-btn" href="https://www.xiaohongshu.com/explore/69c77b1f000000002202a35a" target="_blank">查看笔记 ↗</a>
+    </div>
+    <div class="note-row">
+      <div class="note-info">
+        <span class="note-rank">7</span>
+        <div class="note-thumb-placeholder">📝</div>
+        <div class="note-meta">
+          <a class="note-title-link" href="https://www.xiaohongshu.com/explore/69e5a7da000000002003936c" target="_blank">于适成都演唱会票根收纳‼️‼️防褪色✅</a>
+          <div class="note-stats">
+            <span class="stat-tag stat-exp">曝光 2万</span>
+            <span class="stat-tag stat-ctr">封面CTR 2.9%</span>
+            <span class="stat-tag stat-card">商卡CTR 1.8%</span>
+          </div>
+        </div>
+      </div>
+      <a class="note-jump-btn" href="https://www.xiaohongshu.com/explore/69e5a7da000000002003936c" target="_blank">查看笔记 ↗</a>
+    </div>
+    <div class="note-row">
+      <div class="note-info">
+        <span class="note-rank">8</span>
+        <div class="note-thumb-placeholder">📝</div>
+        <div class="note-meta">
+          <a class="note-title-link" href="https://www.xiaohongshu.com/explore/69bfdd74000000001b020b23" target="_blank">防褪色✅薛之谦广州演唱会票根收纳方法‼️‼️</a>
+          <div class="note-stats">
+            <span class="stat-tag stat-exp">曝光 2万</span>
+            <span class="stat-tag stat-ctr">封面CTR 0.4%</span>
+            <span class="stat-tag stat-card">商卡CTR 0.7%</span>
+          </div>
+        </div>
+      </div>
+      <a class="note-jump-btn" href="https://www.xiaohongshu.com/explore/69bfdd74000000001b020b23" target="_blank">查看笔记 ↗</a>
+    </div>
+    <div class="note-row">
+      <div class="note-info">
+        <span class="note-rank">9</span>
+        <img class="note-thumb" src="http://sns-webpic-qc.xhscdn.com/202604262238/e9f6f7cf35c2c29a2be3f2b40dc9595c/1040g00831uf5966i2s005prnfrt63ltlfmkfen0!nd_prv_wlteh_jpg_3" alt="" loading="lazy">
+        <div class="note-meta">
+          <a class="note-title-link" href="https://www.xiaohongshu.com/explore/69ce4ffe0000000021007afb" target="_blank">谁懂啊ive 正规又双叒跳水了，抓紧上车🥬</a>
+          <div class="note-stats">
+            <span class="stat-tag stat-exp">曝光 2万</span>
+            <span class="stat-tag stat-ctr">封面CTR 3.4%</span>
+            <span class="stat-tag stat-card">商卡CTR 5.1%</span>
+          </div>
+        </div>
+      </div>
+      <a class="note-jump-btn" href="https://www.xiaohongshu.com/explore/69ce4ffe0000000021007afb" target="_blank">查看笔记 ↗</a>
+    </div>
+    <div class="note-row">
+      <div class="note-info">
+        <span class="note-rank">10</span>
+        <img class="note-thumb" src="http://sns-webpic-qc.xhscdn.com/202604262238/c0e78577adaa94bb79b03d6986c5e30f/spectrum/1040g0k031tvd0pejh8005pu514ojjq1cq8pej4g!nd_prv_wlteh_jpg_3" alt="" loading="lazy">
+        <div class="note-meta">
+          <a class="note-title-link" href="https://www.xiaohongshu.com/explore/69be2be00000000023017388" target="_blank">这是一条避雷贴，真没招了</a>
+          <div class="note-stats">
+            <span class="stat-tag stat-exp">曝光 2万</span>
+            <span class="stat-tag stat-ctr">封面CTR 0.6%</span>
+            <span class="stat-tag stat-card">商卡CTR 1.4%</span>
+          </div>
+        </div>
+      </div>
+      <a class="note-jump-btn" href="https://www.xiaohongshu.com/explore/69be2be00000000023017388" target="_blank">查看笔记 ↗</a>
+    </div>
+    <div class="note-row">
+      <div class="note-info">
+        <span class="note-rank">11</span>
+        <img class="note-thumb" src="http://sns-webpic-qc.xhscdn.com/202604262238/ac4880c512cb07b879818618f8739298/1040g2sg31tm5h8gins805omuo75njot89lp2hko!nd_prv_wlteh_jpg_3" alt="" loading="lazy">
+        <div class="note-meta">
+          <a class="note-title-link" href="https://www.xiaohongshu.com/explore/69b4bd91000000002302017d" target="_blank">好看吗</a>
+          <div class="note-stats">
+            <span class="stat-tag stat-exp">曝光 1万</span>
+            <span class="stat-tag stat-ctr">封面CTR 0.3%</span>
+            <span class="stat-tag stat-card">商卡CTR 2.0%</span>
+          </div>
+        </div>
+      </div>
+      <a class="note-jump-btn" href="https://www.xiaohongshu.com/explore/69b4bd91000000002302017d" target="_blank">查看笔记 ↗</a>
+    </div>
+    <div class="note-row">
+      <div class="note-info">
+        <span class="note-rank">12</span>
+        <img class="note-thumb" src="http://sns-webpic-qc.xhscdn.com/202604262238/15e8d761ca01b91bc5615314777ff1fc/1040g2sg31tg6klnd68fg5oe0mt740nck42hjjco!nd_prv_wlteh_jpg_3" alt="" loading="lazy">
+        <div class="note-meta">
+          <a class="note-title-link" href="https://www.xiaohongshu.com/explore/69aeb53e000000002800a49c" target="_blank">防褪色‼️Jolin演唱会票根收纳方法分享</a>
+          <div class="note-stats">
+            <span class="stat-tag stat-exp">曝光 1万</span>
+            <span class="stat-tag stat-ctr">封面CTR 0.3%</span>
+            <span class="stat-tag stat-card">商卡CTR 0.7%</span>
+          </div>
+        </div>
+      </div>
+      <a class="note-jump-btn" href="https://www.xiaohongshu.com/explore/69aeb53e000000002800a49c" target="_blank">查看笔记 ↗</a>
+    </div>
+    <div class="note-row">
+      <div class="note-info">
+        <span class="note-rank">13</span>
+        <img class="note-thumb" src="http://sns-webpic-qc.xhscdn.com/202604262238/1ae0abb5d8f3ba4438107226a9f9a18e/1040g2sg31uqiupht2g705pu3vriji06r3ejtf5o!nd_prv_wlteh_jpg_3" alt="" loading="lazy">
+        <div class="note-meta">
+          <a class="note-title-link" href="https://www.xiaohongshu.com/explore/69da0243000000001b0217d8" target="_blank">周深荧光棒伴手礼彩带打包回放</a>
+          <div class="note-stats">
+            <span class="stat-tag stat-exp">曝光 1万</span>
+            <span class="stat-tag stat-ctr">封面CTR 1.5%</span>
+            <span class="stat-tag stat-card">商卡CTR 3.4%</span>
+          </div>
+        </div>
+      </div>
+      <a class="note-jump-btn" href="https://www.xiaohongshu.com/explore/69da0243000000001b0217d8" target="_blank">查看笔记 ↗</a>
+    </div>
+    <div class="note-row">
+      <div class="note-info">
+        <span class="note-rank">14</span>
+        <img class="note-thumb" src="http://sns-webpic-qc.xhscdn.com/202604262238/49c69bde8c5cfd29235240d67180ba3f/notes_pre_post/1040g3k031ujf00bb2a205n6onjgk85gt58h7a78!nd_prv_wlteh_jpg_3" alt="" loading="lazy">
+        <div class="note-meta">
+          <a class="note-title-link" href="https://www.xiaohongshu.com/explore/69d0743c000000001a0372c1" target="_blank">6.6🥕两个抓捕不限时</a>
+          <div class="note-stats">
+            <span class="stat-tag stat-exp">曝光 1万</span>
+            <span class="stat-tag stat-ctr">封面CTR 10.0%</span>
+            <span class="stat-tag stat-card">商卡CTR 9.6%</span>
+          </div>
+        </div>
+      </div>
+      <a class="note-jump-btn" href="https://www.xiaohongshu.com/explore/69d0743c000000001a0372c1" target="_blank">查看笔记 ↗</a>
+    </div>
+    <div class="note-row">
+      <div class="note-info">
+        <span class="note-rank">15</span>
+        <img class="note-thumb" src="http://sns-webpic-qc.xhscdn.com/202604262238/225b030bd528dc434edf8a9b5e9b5d34/note_pre_post_uhdr/1040g3r831v6bp8j3hu70495vjnfak6og639h3o0!nd_prv_wgth_jpg_3" alt="" loading="lazy">
+        <div class="note-meta">
+          <a class="note-title-link" href="https://www.xiaohongshu.com/explore/69e611b400000000230105da" target="_blank">一点点手写纸花🤏</a>
+          <div class="note-stats">
+            <span class="stat-tag stat-exp">曝光 1万</span>
+            <span class="stat-tag stat-ctr">封面CTR 15.0%</span>
+            <span class="stat-tag stat-card">商卡CTR 16.4%</span>
+          </div>
+        </div>
+      </div>
+      <a class="note-jump-btn" href="https://www.xiaohongshu.com/explore/69e611b400000000230105da" target="_blank">查看笔记 ↗</a>
+    </div>
+    <div class="note-row">
+      <div class="note-info">
+        <span class="note-rank">16</span>
+        <img class="note-thumb" src="http://sns-webpic-qc.xhscdn.com/202604262238/95d8a86452bc93aab2dca47c8db016f9/1040g2sg31up4ojafjm705omuo75njot85dlcfco!nd_prv_wlteh_jpg_3" alt="" loading="lazy">
+        <div class="note-meta">
+          <a class="note-title-link" href="https://www.xiaohongshu.com/explore/69d8887400000000230218be" target="_blank">华晨宇的透镜来了噢</a>
+          <div class="note-stats">
+            <span class="stat-tag stat-exp">曝光 1万</span>
+            <span class="stat-tag stat-ctr">封面CTR 3.6%</span>
+            <span class="stat-tag stat-card">商卡CTR 4.9%</span>
+          </div>
+        </div>
+      </div>
+      <a class="note-jump-btn" href="https://www.xiaohongshu.com/explore/69d8887400000000230218be" target="_blank">查看笔记 ↗</a>
+    </div>
+    <div class="note-row">
+      <div class="note-info">
+        <span class="note-rank">17</span>
+        <img class="note-thumb" src="http://sns-webpic-qc.xhscdn.com/202604262238/5c875a1af5c55a6f7c489a1197f50dda/1040g00831uud09ofig005ovtecq4551nuv0962g!nd_prv_wlteh_jpg_3" alt="" loading="lazy">
+        <div class="note-meta">
+          <a class="note-title-link" href="https://www.xiaohongshu.com/explore/69ddea0c000000001a0205ce" target="_blank">九宫格已集齐，出全部复数！</a>
+          <div class="note-stats">
+            <span class="stat-tag stat-exp">曝光 1万</span>
+            <span class="stat-tag stat-ctr">封面CTR 8.9%</span>
+            <span class="stat-tag stat-card">商卡CTR 7.6%</span>
+          </div>
+        </div>
+      </div>
+      <a class="note-jump-btn" href="https://www.xiaohongshu.com/explore/69ddea0c000000001a0205ce" target="_blank">查看笔记 ↗</a>
+    </div>
+    <div class="note-row">
+      <div class="note-info">
+        <span class="note-rank">18</span>
+        <img class="note-thumb" src="http://sns-webpic-qc.xhscdn.com/202604262238/62f30b24361f68ae6093380e75afdac1/1040g00831uk94feq2s705p67ifh3kh1a7mmj89o!nd_prv_wlteh_jpg_3" alt="" loading="lazy">
+        <div class="note-meta">
+          <a class="note-title-link" href="https://www.xiaohongshu.com/explore/69d38c8f000000001b002e53" target="_blank">（无标题）</a>
+          <div class="note-stats">
+            <span class="stat-tag stat-exp">曝光 1万</span>
+            <span class="stat-tag stat-ctr">封面CTR 1.5%</span>
+            <span class="stat-tag stat-card">商卡CTR 0.5%</span>
+          </div>
+        </div>
+      </div>
+      <a class="note-jump-btn" href="https://www.xiaohongshu.com/explore/69d38c8f000000001b002e53" target="_blank">查看笔记 ↗</a>
+    </div>
+    <div class="note-row">
+      <div class="note-info">
+        <span class="note-rank">19</span>
+        <img class="note-thumb" src="http://sns-webpic-qc.xhscdn.com/202604262238/dcfd1b24021fb99dbf67d49efb2bca46/1040g2sg31v3fimgr1m7g5omuo75njot8tl4ldm8!nd_prv_wlteh_jpg_3" alt="" loading="lazy">
+        <div class="note-meta">
+          <a class="note-title-link" href="https://www.xiaohongshu.com/explore/69e32f70000000001d01ad0c" target="_blank">这款应援手链太适合追星的我们啦</a>
+          <div class="note-stats">
+            <span class="stat-tag stat-exp">曝光 1万</span>
+            <span class="stat-tag stat-ctr">封面CTR 10.0%</span>
+            <span class="stat-tag stat-card">商卡CTR 9.1%</span>
+          </div>
+        </div>
+      </div>
+      <a class="note-jump-btn" href="https://www.xiaohongshu.com/explore/69e32f70000000001d01ad0c" target="_blank">查看笔记 ↗</a>
+    </div>
+    <div class="note-row">
+      <div class="note-info">
+        <span class="note-rank">20</span>
+        <img class="note-thumb" src="http://sns-webpic-qc.xhscdn.com/202604262238/74ae33e7e963a4b1dc4c6a7d1296aff8/notes_pre_post/1040g3k831uvq1qvt3m705q7mb3msl1t471n0oko!nd_prv_wgth_jpg_3" alt="" loading="lazy">
+        <div class="note-meta">
+          <a class="note-title-link" href="https://www.xiaohongshu.com/explore/69df5bd30000000023022445" target="_blank">cortis 拼车！一直娱新出手写中文卡背特典卡</a>
+          <div class="note-stats">
+            <span class="stat-tag stat-exp">曝光 1万</span>
+            <span class="stat-tag stat-ctr">封面CTR 12.0%</span>
+            <span class="stat-tag stat-card">商卡CTR 20.7%</span>
+          </div>
+        </div>
+      </div>
+      <a class="note-jump-btn" href="https://www.xiaohongshu.com/explore/69df5bd30000000023022445" target="_blank">查看笔记 ↗</a>
+    </div>
+    <div class="note-row">
+      <div class="note-info">
+        <span class="note-rank">21</span>
+        <img class="note-thumb" src="http://sns-webpic-qc.xhscdn.com/202604262238/1e11fc72044a9d3ce8f0a66652129fff/1040g00831v383tc0ig7g5q84d30u79qnjrl3o48!nd_prv_wlteh_jpg_3" alt="" loading="lazy">
+        <div class="note-meta">
+          <a class="note-title-link" href="https://www.xiaohongshu.com/explore/69e2e69f0000000022024192" target="_blank">肯德基三丽鸥联名周边开箱来啦</a>
+          <div class="note-stats">
+            <span class="stat-tag stat-exp">曝光 1万</span>
+            <span class="stat-tag stat-ctr">封面CTR 10.0%</span>
+            <span class="stat-tag stat-card">商卡CTR 7.2%</span>
+          </div>
+        </div>
+      </div>
+      <a class="note-jump-btn" href="https://www.xiaohongshu.com/explore/69e2e69f0000000022024192" target="_blank">查看笔记 ↗</a>
+    </div>
+    <div class="note-row">
+      <div class="note-info">
+        <span class="note-rank">22</span>
+        <img class="note-thumb" src="http://sns-webpic-qc.xhscdn.com/202604262238/3392de639f77d334ae79278a4d988edb/1040g00831ub5g83bj4005omuo75njot8n17d000!nd_prv_wlteh_jpg_3" alt="" loading="lazy">
+        <div class="note-meta">
+          <a class="note-title-link" href="https://www.xiaohongshu.com/explore/69ca37fb000000002302025b" target="_blank">这个我能玩一天！</a>
+          <div class="note-stats">
+            <span class="stat-tag stat-exp">曝光 1万</span>
+            <span class="stat-tag stat-ctr">封面CTR 10.0%</span>
+            <span class="stat-tag stat-card">商卡CTR 4.6%</span>
+          </div>
+        </div>
+      </div>
+      <a class="note-jump-btn" href="https://www.xiaohongshu.com/explore/69ca37fb000000002302025b" target="_blank">查看笔记 ↗</a>
+    </div>
+    <div class="note-row">
+      <div class="note-info">
+        <span class="note-rank">23</span>
+        <img class="note-thumb" src="http://sns-webpic-qc.xhscdn.com/202604262238/b8e094b43a594f12a644b8e40d6b4477/1040g2sg31v4q366t2i005pu3vriji06rkhrfhn8!nd_prv_wlteh_jpg_3" alt="" loading="lazy">
+        <div class="note-meta">
+          <a class="note-title-link" href="https://www.xiaohongshu.com/explore/69e47a3f0000000023007daf" target="_blank">2026周深荧光棒伴手礼打包视频</a>
+          <div class="note-stats">
+            <span class="stat-tag stat-exp">曝光 1万</span>
+            <span class="stat-tag stat-ctr">封面CTR 8.0%</span>
+            <span class="stat-tag stat-card">商卡CTR 9.2%</span>
+          </div>
+        </div>
+      </div>
+      <a class="note-jump-btn" href="https://www.xiaohongshu.com/explore/69e47a3f0000000023007daf" target="_blank">查看笔记 ↗</a>
+    </div>
+    <div class="note-row">
+      <div class="note-info">
+        <span class="note-rank">24</span>
+        <img class="note-thumb" src="http://sns-webpic-qc.xhscdn.com/202604262238/c22c0c01aaf9f977776a81fc623cc620/notes_uhdr/1040g3qg31v59ckl42a005p7f8vahmbhvht8jt9g!nd_prv_wlteh_jpg_3" alt="" loading="lazy">
+        <div class="note-meta">
+          <a class="note-title-link" href="https://www.xiaohongshu.com/explore/69e3accb000000001f007841" target="_blank">周深2026年广州首场彩带fys</a>
+          <div class="note-stats">
+            <span class="stat-tag stat-exp">曝光 1万</span>
+            <span class="stat-tag stat-ctr">封面CTR 15.0%</span>
+            <span class="stat-tag stat-card">商卡CTR 19.0%</span>
+          </div>
+        </div>
+      </div>
+      <a class="note-jump-btn" href="https://www.xiaohongshu.com/explore/69e3accb000000001f007841" target="_blank">查看笔记 ↗</a>
+    </div>
+    <div class="note-row">
+      <div class="note-info">
+        <span class="note-rank">25</span>
+        <img class="note-thumb" src="http://sns-webpic-qc.xhscdn.com/202604262238/5ecc7c98c27bdaf39971ba41ea5ddc2a/note_pre_post_uhdr/1040g3r031uub6s6qhu0g5pstjrd2no3ut81f4do!nd_prv_wgth_jpg_3" alt="" loading="lazy">
+        <div class="note-meta">
+          <a class="note-title-link" href="https://www.xiaohongshu.com/explore/69dddc04000000002302326b" target="_blank">调整了无数版的饺子碗终于准备发货了😭</a>
+          <div class="note-stats">
+            <span class="stat-tag stat-exp">曝光 1万</span>
+            <span class="stat-tag stat-ctr">封面CTR 15.0%</span>
+            <span class="stat-tag stat-card">商卡CTR 5.9%</span>
+          </div>
+        </div>
+      </div>
+      <a class="note-jump-btn" href="https://www.xiaohongshu.com/explore/69dddc04000000002302326b" target="_blank">查看笔记 ↗</a>
     </div>
   </div>
 
